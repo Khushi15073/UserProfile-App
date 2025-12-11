@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-
-import "./About.css";
 import { useNavigate } from "react-router-dom";
-function About({setCleanupCount}) {
+import "./About.css";
+function About({ setCleanupCount }) {
   const navigate = useNavigate();
   const [dataAbout, setDataAbout] = useState([]);
   useEffect(() => {
@@ -15,8 +14,7 @@ function About({setCleanupCount}) {
 
       .catch((error) => console.log("Error:", error));
 
-
-        return () => {
+    return () => {
       console.log("Home cleanup running...");
       setCleanupCount((prev) => prev + 1);
     };

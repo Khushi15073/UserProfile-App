@@ -1,7 +1,3 @@
-
-
-
-
 import { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
@@ -27,8 +23,14 @@ function App() {
             path="/"
             element={<Home setCleanupCount={setCleanupCount} />}
           />
-          <Route path="/about" element={<About setCleanupCount={setCleanupCount}  />} />
-          <Route path="/profile/:id" element={<Profile  setCleanupCount={setCleanupCount} />} />
+          <Route
+            path="/about"
+            element={<About setCleanupCount={setCleanupCount} />}
+          />
+          <Route
+            path="/profile/:id"
+            element={<Profile setCleanupCount={setCleanupCount} />}
+          />
         </Routes>
       </BrowserRouter>
     </>
