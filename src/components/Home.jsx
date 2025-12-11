@@ -16,6 +16,7 @@ function Home({ setCleanupCount }) {
           "https://jsonplaceholder.typicode.com/users"
         );
         setData(response.data);
+        console.log('home data', data);
         setError("");
       } catch (error) {
         setError(error.message);

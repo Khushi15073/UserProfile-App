@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Profile from "./components/Profile";
+import CreatePost from "./components/CreatePost";
 
 function App() {
   const [cleanupCount, setCleanupCount] = useState(0);
@@ -30,6 +31,10 @@ function App() {
           <Route
             path="/profile/:id"
             element={<Profile setCleanupCount={setCleanupCount} />}
+          />
+            <Route
+            path="/createUser"
+            element={<CreatePost setCleanupCount={setCleanupCount} />}
           />
         </Routes>
       </BrowserRouter>
