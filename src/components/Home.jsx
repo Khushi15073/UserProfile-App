@@ -8,19 +8,15 @@ function Home({ setCleanupCount }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Home mounted");
-
-    return () => {
-      console.log("Home cleanup running...");
-      setCleanupCount((prev) => prev + 1);   
-    };
-  }, []);
-
-  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((jsondata) => setData(jsondata))
       .catch((error) => console.log("Error:", error));
+
+    return () => {
+      console.log("Home cleanup running...");
+      setCleanupCount((prev) => prev + 1);
+    };
   }, []);
 
   return (
@@ -34,7 +30,9 @@ function Home({ setCleanupCount }) {
             key={item.id}
             onClick={() => navigate(`/profile/${item.id}`)}
           >
-            <p><strong>{item.name}</strong></p>
+            <p>
+              <strong>{item.name}</strong>
+            </p>
             <p>{item.username}</p>
             <p>{item.phone}</p>
             <p>{item.email}</p>
