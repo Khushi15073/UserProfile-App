@@ -7,6 +7,8 @@ nav {
   align-items: center;
 }
 
+
+
 nav a {
   color: white;
   text-decoration: none;
@@ -17,6 +19,7 @@ nav a {
   transition: 0.3s;
 }
 
+
 nav a:hover {
   background: #444;
 }
@@ -24,4 +27,12 @@ nav a:hover {
 nav a.active {
   background: #61dafb;
   color: black;
+}
+nav img {
+  width: 40px;        
+  height: 40px;
+  border-radius: 50%;   
+  object-fit: cover;    
+  margin-right: 15px;   
+
 }

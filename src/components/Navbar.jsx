@@ -1,9 +1,11 @@
+import myImage from "../assets/user1icon.png";
 
 import { NavLink } from "react-router-dom";
  import "./Navbar.css";
 function Navbar() {
   return (
     <nav>
+    <img src={myImage} alt='user image' />
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/profile">Profile</NavLink>

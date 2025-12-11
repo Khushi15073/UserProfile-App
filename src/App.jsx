@@ -27,8 +27,8 @@ function App() {
             path="/"
             element={<Home setCleanupCount={setCleanupCount} />}
           />
-          <Route path="/about" element={<About />} />
-          <Route path="/profile/:id" element={<Profile/>} />
+          <Route path="/about" element={<About setCleanupCount={setCleanupCount}  />} />
+          <Route path="/profile/:id" element={<Profile  setCleanupCount={setCleanupCount} />} />
         </Routes>
       </BrowserRouter>
     </>

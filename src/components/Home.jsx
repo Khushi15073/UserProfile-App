@@ -8,6 +8,7 @@ function Home({ setCleanupCount }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((jsondata) => setData(jsondata))

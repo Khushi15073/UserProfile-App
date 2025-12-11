@@ -1,15 +1,25 @@
 import "./Profile.css";
 import { useState, useEffect } from "react";
 import {  useParams } from "react-router-dom";
-function Profile() {
+function Profile({setCleanupCount}) {
   const { id } = useParams();
   const [user, setUser] = useState({});
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((res) => res.json())
-      .then((data) => setUser(data));
-      console.log('profile data',user);
+      .then((data) => setUser(data))
+      .catch((error) => console.log("Error:", error));
+
+      
+      console.log('profile data',user); 
+
+
+
+       return () => {
+      console.log("Home cleanup running...");
+      setCleanupCount((prev) => prev + 1);
+    };
   }, [id]);
 
   return (
