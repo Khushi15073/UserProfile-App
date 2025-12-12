@@ -1,3 +1,11 @@
+
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
 .profile-container {
   max-width: 400px;
   padding: 25px;
@@ -31,7 +39,8 @@
      border-radius: 12px;
       background: #f8f9fa;
       font-size: 20px;
-      border-left: 8px solid  #61dafb;;
+      border-left: 8px solid  #61dafb;
+      color: black;
 
       
 }

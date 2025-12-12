@@ -1,41 +1,25 @@
-import { useState, useEffect } from "react";
+import {useContext,useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import "./Profile.css";
-import axios from "axios";
-function Profile({ setCleanupCount }) {
+import { MyContext } from "../context/UserContext";
+function Profile() {
   const { id } = useParams();
-  const [user, setUser] = useState({});
-  const[error ,setError]=useState('')
-  const[loading, setLoading] = useState(true)
+  const { data, error,   loading ,setCleanupCount} = useContext(MyContext);
 
-  useEffect(() => {
 
-    const fetchdata = async ()=>{
-      try{
-        const response = await axios.get(`https://jsonplaceholder.typicodE.com/users/${id}`)
-        setUser(response.data)
-        setError('')
-      }
-      catch(err){
-setError(err.message)
-setUser(null)
-      }
-      finally{
-        setLoading(false)
-      }
-    }
-fetchdata();
-    return () => {
+  const user = data.find((u) => u.id == id);
+useEffect(()=>{
+   return () => {
       console.log("Home cleanup running...");
       setCleanupCount((prev) => prev + 1);
     };
-  }, [id]);
+},[id]);
 
-
-  if(loading) return <p>Loading data....</p>
-  if(error) return <p>Error: {error}</p>
+  if (loading) return <p>Loading data....</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
-    <>
+    <div className="profile-page">
       <div className="profile-container">
         <h1>Profile ID: {id}</h1>
 
@@ -55,7 +39,7 @@ fetchdata();
           <strong>Phone:</strong> {user.phone}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Profile;

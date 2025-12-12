@@ -5,6 +5,7 @@ nav {
   display: flex;
   gap: 20px;              
   align-items: center;
+  justify-content: center;
 }
 
 
@@ -34,5 +35,12 @@ nav img {
   border-radius: 50%;   
   object-fit: cover;    
   margin-right: 15px;   
+
+}
+
+.btn{
+  margin-left: 20px;
+  width: 120px;
+    background: #61dafb;
 
 }

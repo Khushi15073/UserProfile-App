@@ -1,43 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext ,  useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./Home.css";
 
-function Home({ setCleanupCount }) {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+import "./Home.css";
+import { MyContext } from "../context/UserContext";
+
+function Home() {
+const {data, error,   loading ,setCleanupCount } = useContext(MyContext)
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchdata = async () => {
-      try {
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        setData(response.data);
-        console.log('home data', data);
-        setError("");
-      } catch (error) {
-        setError(error.message);
-        setData(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchdata();
-
-    return () => {
+  useEffect(()=>{
+   return () => {
       console.log("Home cleanup running...");
       setCleanupCount((prev) => prev + 1);
     };
-  }, []);
-
+},[]);
   if (loading) return <p>Loading data...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="home-container">
+   <div> <div className="home-container">
       <h1>Users List</h1>
 
       <div className="user-list">
@@ -56,7 +37,7 @@ function Home({ setCleanupCount }) {
           </div>
         ))}
       </div>
-    </div>
+    </div></div>
   );
 }
 
