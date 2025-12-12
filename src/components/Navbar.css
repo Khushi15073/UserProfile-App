@@ -38,9 +38,16 @@ nav img {
 
 }
 
+
+
 .btn{
-  margin-left: 20px;
-  width: 120px;
+    font-size: 18px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
     background: #61dafb;
+    cursor: pointer;
+     border: none;
 
 }

@@ -50,7 +50,7 @@ console.log('error',err);
         <input type="text"  placeholder="Enter Your  UserName" onChange= {handleChange} name="username" value={formData.username} />  <br/>
         <input type="Number"  placeholder="Enter Your PhoneNumber" onChange= {handleChange} name="phone" value={formData.phone}  />  <br/>
         <input type="Email"  placeholder="Enter Your Email" onChange= {handleChange} name="email" value={formData.email} />  <br/>
-        <button type="submit">Submit</button>
+        <button className="create-btn" type="submit">Submit</button>
        </form>
       </div>
     </>
