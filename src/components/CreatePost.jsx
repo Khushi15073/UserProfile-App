@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
-import './CreatePost.css'
+import { useContext, useState } from "react";
+
+import { MyContext } from "../context/UserContext";
 
 function CreatePost() {
-
- 
+  const{setData} = useContext(MyContext)
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -13,45 +13,83 @@ function CreatePost() {
     email: "",
   });
 
-  const handleChange = (e)=>{
-      
+  const handleChange = (e) => {
+    setFormData((Formdata) => ({
+      ...Formdata,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-    setFormData((Formdata) => ({ ...Formdata, [e.target.name]: e.target.value }));
-  }
-
-  const handleSubmit =  async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-try{
-const response  = await axios.post('https://jsonplaceholder.typicode.com/users',formData)
-console.log('post data', response);
-}
-catch(err){
-console.log('error',err);
-}
- setFormData({
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/users",
+        formData
+      );
+
+      console.log("post data", response);
+  setData(prev => [formData , ...prev ]);
+    } catch (err) {
+      console.log("error", err);
+    }
+    setFormData({
       id: "",
-    name: "",
-    username: "",
-    phone: "",
-    email: "",
- })
-
-  }
-
-
+      name: "",
+      username: "",
+      phone: "",
+      email: "",
+    });
+  };
 
   return (
     <>
       <div className="form-container">
-       <form  onSubmit={handleSubmit}>
-         <input type="text" placeholder="Enter Your Id" onChange= {handleChange} name="id" value={formData.id} />
-         <br/>
-        <input type="text"  placeholder="Enter Your Name" onChange= {handleChange} name="name" value={formData.name} />  <br/>
-        <input type="text"  placeholder="Enter Your  UserName" onChange= {handleChange} name="username" value={formData.username} />  <br/>
-        <input type="Number"  placeholder="Enter Your PhoneNumber" onChange= {handleChange} name="phone" value={formData.phone}  />  <br/>
-        <input type="Email"  placeholder="Enter Your Email" onChange= {handleChange} name="email" value={formData.email} />  <br/>
-        <button className="create-btn" type="submit">Submit</button>
-       </form>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Enter Your Id"
+            onChange={handleChange}
+            name="id"
+            value={formData.id}
+          />
+          <br />
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            onChange={handleChange}
+            name="name"
+            value={formData.name}
+          />{" "}
+          <br />
+          <input
+            type="text"
+            placeholder="Enter Your  UserName"
+            onChange={handleChange}
+            name="username"
+            value={formData.username}
+          />{" "}
+          <br />
+          <input
+            type="Number"
+            placeholder="Enter Your PhoneNumber"
+            onChange={handleChange}
+            name="phone"
+            value={formData.phone}
+          />{" "}
+          <br />
+          <input
+            type="Email"
+            placeholder="Enter Your Email"
+            onChange={handleChange}
+            name="email"
+            value={formData.email}
+          />{" "}
+          <br />
+          <button className="create-btn" type="submit" >
+            Submit
+          </button>
+        </form>
       </div>
     </>
   );

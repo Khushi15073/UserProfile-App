@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useContext } from "react";
-import "./App.css";
+
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -14,9 +14,7 @@ function App() {
 
   return (
     <div
-      className={
-        mode ? `container container-light` : `container container-dark`
-      }
+    className={mode ? "bg-white text-black" : "bg-gray-900 text-white"}
     >
       <BrowserRouter>
         <Navbar />

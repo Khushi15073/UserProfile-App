@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./About.css";
+
 import { MyContext } from "../context/UserContext";
 
 function About() {
