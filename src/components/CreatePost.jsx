@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-
 import { MyContext } from "../context/UserContext";
 
 function CreatePost() {
-  const{setData} = useContext(MyContext)
+  const { setData } = useContext(MyContext);
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -14,8 +13,8 @@ function CreatePost() {
   });
 
   const handleChange = (e) => {
-    setFormData((Formdata) => ({
-      ...Formdata,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
     }));
   };
@@ -27,9 +26,8 @@ function CreatePost() {
         "https://jsonplaceholder.typicode.com/users",
         formData
       );
-
       console.log("post data", response);
-  setData(prev => [formData , ...prev ]);
+      setData((prev) => [formData, ...prev]);
     } catch (err) {
       console.log("error", err);
     }
@@ -43,55 +41,64 @@ function CreatePost() {
   };
 
   return (
-    <>
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter Your Id"
-            onChange={handleChange}
-            name="id"
-            value={formData.id}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Enter Your Name"
-            onChange={handleChange}
-            name="name"
-            value={formData.name}
-          />{" "}
-          <br />
-          <input
-            type="text"
-            placeholder="Enter Your  UserName"
-            onChange={handleChange}
-            name="username"
-            value={formData.username}
-          />{" "}
-          <br />
-          <input
-            type="Number"
-            placeholder="Enter Your PhoneNumber"
-            onChange={handleChange}
-            name="phone"
-            value={formData.phone}
-          />{" "}
-          <br />
-          <input
-            type="Email"
-            placeholder="Enter Your Email"
-            onChange={handleChange}
-            name="email"
-            value={formData.email}
-          />{" "}
-          <br />
-          <button className="create-btn" type="submit" >
-            Submit
-          </button>
-        </form>
-      </div>
-    </>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+      <h1 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-100">
+        Create Post
+      </h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          placeholder="Enter Your Id"
+          name="id"
+          required
+          value={formData.id}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="text"
+          placeholder="Enter Your Name"
+          name="name"
+          required
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="text"
+          placeholder="Enter Your Username"
+          name="username"
+          required
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="number"
+          placeholder="Enter Your Phone Number"
+          name="phone"
+          required
+          value={formData.phone}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="email"
+          placeholder="Enter Your Email"
+          name="email"
+          required
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded transition duration-200"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
 

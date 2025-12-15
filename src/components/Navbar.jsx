@@ -108,9 +108,9 @@ function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-full bg-white dark:bg-gray-900 shadow-md px-6 py-3 flex items-center justify-between">
+    <nav className="w-full bg-white  shadow-md px-6 py-3 flex items-center justify-between">
       
-      {/* Left: Logo + Title */}
+    
       <div
         className="flex items-center gap-3 cursor-pointer"
         onClick={() => navigate("/")}
@@ -120,20 +120,20 @@ function Navbar() {
           alt="user"
           className="w-12 h-12 rounded-full"
         />
-        <span className="text-xl font-semibold text-gray-800 dark:text-white">
+        <span className="text-xl font-semibold text-gray-800 ">
           UserProfile
         </span>
       </div>
 
-      {/* Center: Links */}
-      <div className="flex gap-6">
+     
+      <div className="flex gap-6 items-center">
         <NavLink
           to="/"
           className={({ isActive }) =>
             `font-medium ${
               isActive
-                ? "text-blue-600"
-                : "text-gray-600 dark:text-gray-300"
+                ? "text-gray-900 bg-blue-500 rounded-lg p-2 px-4"
+                : "text-gray-900 "
             }`
           }
         >
@@ -145,8 +145,8 @@ function Navbar() {
           className={({ isActive }) =>
             `font-medium ${
               isActive
-                ? "text-blue-600"
-                : "text-gray-600 dark:text-gray-300"
+                ? "text-gray-900 bg-blue-500 rounded-lg p-2 px-4"
+                : "text-gray-900 "
             }`
           }
         >
@@ -158,29 +158,27 @@ function Navbar() {
           className={({ isActive }) =>
             `font-medium ${
               isActive
-                ? "text-blue-600"
-                : "text-gray-600 dark:text-gray-300"
+                ? "text-gray-900 bg-blue-500 rounded-lg p-2 px-4"
+                : "text-gray-900"
             }`
           }
         >
           Create User
         </NavLink>
       </div>
-
-      {/* Right: Theme + Count */}
       <div className="flex items-center gap-4">
         <button
           onClick={() => setMode((prev) => !prev)}
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+          className="p-3 rounded-full bg-gray-200"
         >
-          {mode ? (
+          {mode ? 
             <FaSun className="text-yellow-400" />
-          ) : (
+          : 
             <FaMoon className="text-gray-800" />
-          )}
+          }
         </button>
 
-        <span className="text-sm text-gray-700 dark:text-gray-300">
+        <span className="text-sm text-gray-900 ">
           Count: {cleanupCount}
         </span>
       </div>

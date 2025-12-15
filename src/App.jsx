@@ -8,23 +8,21 @@ import Profile from "./components/Profile";
 import CreatePost from "./components/CreatePost";
 import { ModeContext } from "./context/ThemeContext";
 
-
 function App() {
   const { mode } = useContext(ModeContext);
 
   return (
-    <div
-    className={mode ? "bg-white text-black" : "bg-gray-900 text-white"}
-    >
+    <div className={`${mode ? "bg-white text-black" : "bg-gray-900 text-white"} min-h-screen`}>
       <BrowserRouter>
         <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/createUser" element={<CreatePost />} />
-        </Routes>
+        <div >
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/createUser" element={<CreatePost />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
